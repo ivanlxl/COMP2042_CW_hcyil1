@@ -14,18 +14,33 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-
+/**
+ * Endgame class
+ */
 public class EndGame {
     private static EndGame singleInstance = null;
     private EndGame(){
 
     }
+
+    /**
+     * Used to call EndGame method
+     * @return
+     */
     public static EndGame getInstance(){
         if(singleInstance == null)
-            singleInstance= new EndGame();
+            singleInstance = new EndGame();
         return singleInstance;
     }
 
+
+    /**
+     * End game screen settings
+     * @param endGameScene
+     * @param root
+     * @param primaryStage
+     * @param score
+     */
     public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score){
         Text text = new Text("GAME OVER");
         text.relocate(250,250);

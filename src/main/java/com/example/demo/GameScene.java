@@ -13,7 +13,7 @@ import java.util.Random;
 
 class GameScene {
     private static int HEIGHT = 700;
-    private static int n = 4;
+    private static int n = 4; //n = grid, consider renaming
     private final static int distanceBetweenCells = 10;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
@@ -21,7 +21,7 @@ class GameScene {
     private Group root;
     private long score = 0;
 
-    static void setN(int number) {
+    static void setN(int number) { //Most likely for mode changing
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }
@@ -30,6 +30,10 @@ class GameScene {
         return LENGTH;
     }
 
+    /**
+     * Random number generator
+     * @param turn
+     */
     private void randomFillNumber(int turn) {
 
         Cell[][] emptyCells = new Cell[n][n];
@@ -57,7 +61,9 @@ class GameScene {
         }
 
 
-
+/**
+ * Determines whether the randomly spawned cell is a 2 or 4
+ */
         Text text;
         Random random = new Random();
         boolean putTwo = true;
@@ -79,6 +85,10 @@ class GameScene {
         }
     }
 
+    /**
+     * Used to check whether the 2048 cell has been achieved
+     * @return
+     */
     private int  haveEmptyCell() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -204,7 +214,8 @@ class GameScene {
         if (isValidDesH(i, j, des, sign)) {
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
-        } else if (des != j) {
+        }
+        else if (des != j) {
             cells[i][j].changeCell(cells[i][des]);
         }
     }
@@ -227,6 +238,12 @@ class GameScene {
         }
     }
 
+    /**
+     * Checks whether the cell beside has the same number
+     * @param i
+     * @param j
+     * @return
+     */
     private boolean haveSameNumberNearly(int i, int j) {
         if (i < n - 1 && j < n - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
@@ -237,6 +254,10 @@ class GameScene {
         return false;
     }
 
+    /**
+     * Determines whether the cell can move or not
+     * @return
+     */
     private boolean canNotMove() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -248,7 +269,10 @@ class GameScene {
         return true;
     }
 
-    private void sumCellNumbersToScore() {
+    /**
+     * Update Score
+     */
+    private void sumCellNumbersToScore() { //Error to be fixed here
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 score += cells[i][j].getNumber();
@@ -280,6 +304,9 @@ class GameScene {
         randomFillNumber(1);
         randomFillNumber(1);
 
+        /**
+         * Controls
+         */
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
                 Platform.runLater(() -> {
                     int haveEmptyCell;
@@ -292,9 +319,15 @@ class GameScene {
                     } else if (key.getCode() == KeyCode.RIGHT) {
                         GameScene.this.moveRight();
                     }
+                    /**
+                     * Sum up the score
+                     */
                     GameScene.this.sumCellNumbersToScore();
                     scoreText.setText(score + "");
                     haveEmptyCell = GameScene.this.haveEmptyCell();
+                    /**
+                     * If there are no more empty cells and you cant move, end game
+                     */
                     if (haveEmptyCell == -1) {
                         if (GameScene.this.canNotMove()) {
                             primaryStage.setScene(endGameScene);

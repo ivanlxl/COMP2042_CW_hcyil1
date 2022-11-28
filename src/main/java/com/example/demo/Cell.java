@@ -6,6 +6,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+/**
+ * Creates each individual cell
+ */
 public class Cell {
     private Rectangle rectangle;
     private Group root;
@@ -20,6 +23,13 @@ public class Cell {
         return modify;
     }
 
+    /**
+     *Constructor name for Cell
+     * @param x width
+     * @param y height
+     * @param scale
+     * @param root
+     */
     Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
         rectangle.setX(x);
@@ -36,12 +46,16 @@ public class Cell {
         this.textClass = textClass;
     }
 
+    /**
+     * Updates the numbering of the cell once they move
+     * @param cell
+     */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
         root.getChildren().remove(cell.getTextClass());
-        root.getChildren().remove(textClass);
+        root.getChildren().remove(textClass); //Removes the 0 that would appear in the cell
 
-        if (!cell.getTextClass().getText().equals("0")) {
+        if (!cell.getTextClass().getText().equals("0")) { //if the cell is not 0, put the number
             root.getChildren().add(cell.getTextClass());
         }
         if (!textClass.getText().equals("0")) {
@@ -51,14 +65,22 @@ public class Cell {
         cell.setColorByNumber(cell.getNumber());
     }
 
+    /**
+     * Handles adding the value of each cell
+     * @param cell
+     */
     void adder(Cell cell) {
-        cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
-        textClass.setText("0");
+        cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");//Adds the 2 numbers
+        textClass.setText("0"); //When 2 cells are added, one of the cell needs to be made 0
         root.getChildren().remove(textClass);
         cell.setColorByNumber(cell.getNumber());
         setColorByNumber(getNumber());
     }
 
+    /**
+     * Setting each number tile to a specified colour
+     * @param number
+     */
     void setColorByNumber(int number) {
         switch (number) {
             case 0:
