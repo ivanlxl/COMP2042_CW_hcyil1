@@ -21,6 +21,7 @@ class GameScene {
     private Group root;
     private long score = 0;
 
+
     static void setN(int number) { //Most likely for mode changing
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
@@ -272,12 +273,9 @@ class GameScene {
     /**
      * Update Score
      */
-    private void sumCellNumbersToScore() { //Error to be fixed here
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                score += cells[i][j].getNumber();
-            }
-        }
+    private void updateScore() {
+        score += Cell.temp_score;
+        Cell.temp_score = 0;
     }
 
     void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
@@ -322,7 +320,7 @@ class GameScene {
                     /**
                      * Sum up the score
                      */
-                    GameScene.this.sumCellNumbersToScore();
+                    GameScene.this.updateScore();
                     scoreText.setText(score + "");
                     haveEmptyCell = GameScene.this.haveEmptyCell();
                     /**

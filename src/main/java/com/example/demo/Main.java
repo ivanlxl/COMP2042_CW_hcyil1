@@ -2,8 +2,10 @@ package com.example.demo;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonType;
@@ -22,8 +24,8 @@ public class Main extends Application {
     static final int WIDTH = 900;
     static final int HEIGHT = 900;
     private Group gameRoot = new Group();
-    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-    private static Scanner input= new Scanner(System.in);
+    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //Redundant
+    private static Scanner input= new Scanner(System.in); //Account
 
     public void setGameScene(Scene gameScene) {
         this.gameScene = gameScene;
@@ -35,6 +37,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("StartScreen.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    } catch(Exception e){
+        e.printStackTrace();
+    }
 
         Group menuRoot = new Group();
         Scene menuScene = new Scene(menuRoot, WIDTH, HEIGHT);
@@ -60,7 +70,8 @@ public class Main extends Application {
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
 
-        Group gameRoot = new Group();
+
+        /**Group gameRoot = new Group();
         setGameRoot(gameRoot);
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
@@ -69,6 +80,7 @@ public class Main extends Application {
         game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
 
         primaryStage.show();
+         */
     }
 
     public static void main(String[] args) {

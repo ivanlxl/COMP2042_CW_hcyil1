@@ -14,6 +14,8 @@ public class Cell {
     private Group root;
     private Text textClass;
     private boolean modify = false;
+    static long temp_score = 0;
+
 
     void setModify(boolean modify) {
         this.modify = modify;
@@ -75,6 +77,7 @@ public class Cell {
         root.getChildren().remove(textClass);
         cell.setColorByNumber(cell.getNumber());
         setColorByNumber(getNumber());
+        temp_score += (cell.getNumber() + this.getNumber());
     }
 
     /**
