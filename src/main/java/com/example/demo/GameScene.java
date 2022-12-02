@@ -1,17 +1,24 @@
 package com.example.demo;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Random;
 
-class GameScene {
+class GameScene{
     private static int HEIGHT = 700;
     private static int n = 4; //n = grid, consider renaming
     private final static int distanceBetweenCells = 10;
@@ -20,6 +27,8 @@ class GameScene {
     private Cell[][] cells = new Cell[n][n];
     private Group root;
     private long score = 0;
+    private boolean keyPressed = false; // Variable to ensure only arrow keys can spawn a new cell
+
 
 
     static void setN(int number) { //Most likely for mode changing
@@ -44,7 +53,7 @@ class GameScene {
         outer:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (cells[i][j].getNumber() == 0) {
+                if (cells[i][j].getNumber() == 0) { // if the cell is empty, copy it into emptyCells
                     emptyCells[a][b] = cells[i][j];
                     if (b < n-1) {
                         bForBound=b;
@@ -56,6 +65,7 @@ class GameScene {
                         b = 0;
                         if(a==n)
                             break outer;
+
                     }
                 }
             }
@@ -87,7 +97,7 @@ class GameScene {
     }
 
     /**
-     * Used to check whether the 2048 cell has been achieved
+     * Used to check whether there are empty cells, whether 2048 has been achieved, or whether there are no empty cells
      * @return
      */
     private int  haveEmptyCell() {
@@ -245,11 +255,18 @@ class GameScene {
      * @param j
      * @return
      */
+
     private boolean haveSameNumberNearly(int i, int j) {
         if (i < n - 1 && j < n - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
             if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
+                return true;
+        }
+        else if (i > 0 && j > 0) {
+            if (cells[i - 1][j].getNumber() == cells[i][j].getNumber())
+                return true;
+            if (cells[i][j - 1].getNumber() == cells[i][j].getNumber())
                 return true;
         }
         return false;
@@ -310,12 +327,16 @@ class GameScene {
                     int haveEmptyCell;
                     if (key.getCode() == KeyCode.DOWN) {
                         GameScene.this.moveDown();
+                        keyPressed = true;
                     } else if (key.getCode() == KeyCode.UP) {
                         GameScene.this.moveUp();
+                        keyPressed = true;
                     } else if (key.getCode() == KeyCode.LEFT) {
                         GameScene.this.moveLeft();
+                        keyPressed = true;
                     } else if (key.getCode() == KeyCode.RIGHT) {
                         GameScene.this.moveRight();
+                        keyPressed = true;
                     }
                     /**
                      * Sum up the score
@@ -324,18 +345,23 @@ class GameScene {
                     scoreText.setText(score + "");
                     haveEmptyCell = GameScene.this.haveEmptyCell();
                     /**
-                     * If there are no more empty cells and you cant move, end game
+                     * If there are no more empty cells, and you cant move, end game
                      */
                     if (haveEmptyCell == -1) {
                         if (GameScene.this.canNotMove()) {
-                            primaryStage.setScene(endGameScene);
-
-                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
-                            root.getChildren().clear();
-                            score = 0;
+                            try {
+                                Pane gameOverPane = (Pane) FXMLLoader.load(getClass().getResource("LoseScreen.fxml"));
+                                primaryStage.setScene(new Scene(gameOverPane));
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            EndController ObjScore = new EndController();
+                            ObjScore.getScore(score);
                         }
-                    } else if(haveEmptyCell == 1)
+                    } else if(haveEmptyCell == 1 && keyPressed == true){
                         GameScene.this.randomFillNumber(2);
+                        keyPressed = false;
+                    }
                 });
             });
     }
