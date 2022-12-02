@@ -23,7 +23,7 @@ import java.util.Scanner;
 public class Main extends Application {
     static final int WIDTH = 900;
     static final int HEIGHT = 900;
-    static Color COLOUR; //Used for changing background colour theme
+    static Color COLOUR = Color.rgb(233, 203, 81); //Used for changing background colour theme
     private Group gameRoot = new Group();
     private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //Redundant
     private static Scanner input= new Scanner(System.in); //Account
@@ -46,7 +46,7 @@ public class Main extends Application {
     } catch(Exception e){
         e.printStackTrace();
     }
-
+/**
         Group menuRoot = new Group();
         Scene menuScene = new Scene(menuRoot, WIDTH, HEIGHT);
         Group accountRoot = new Group();
@@ -70,18 +70,7 @@ public class Main extends Application {
         backgroundOfMenuForPlay.setX(WIDTH / 2 - 120);
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
-
-
-        /**Group gameRoot = new Group();
-        setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-        setGameScene(gameScene);
-        primaryStage.setScene(gameScene);
-        GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
-
-        primaryStage.show();
-         */
+ */
     }
 
     public static void main(String[] args) {

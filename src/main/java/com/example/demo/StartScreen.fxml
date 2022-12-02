@@ -9,16 +9,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: fce781;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
+<AnchorPane fx:id="myPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E9CB51;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StartController">
    <children>
       <ButtonBar layoutX="200.0" layoutY="276.0" prefHeight="40.0" prefWidth="200.0" />
       <BorderPane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
          <center>
-            <ColorPicker fx:id="myBackgroundPicker" onAction="#changeBackground" BorderPane.alignment="CENTER">
+            <ColorPicker fx:id="myBackgroundPicker" onAction="#changeBackground" promptText="Pick Your Colour" style="-fx-background-color: FFA500;" BorderPane.alignment="CENTER">
                <value>
-                  <Color red="0.9882352948188782" green="0.9058823585510254" blue="0.5058823823928833" />
-               </value>
-            </ColorPicker>
+                  <Color red="0.9137254953384399" green="0.7960784435272217" blue="0.3176470696926117" />
+               </value></ColorPicker>
          </center>
       </BorderPane>
       <Label layoutX="189.0" layoutY="29.0" text="2048" textFill="WHITE">

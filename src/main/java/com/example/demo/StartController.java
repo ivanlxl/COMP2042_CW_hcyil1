@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.example.demo.Main.*;
-public class Controller {
+public class StartController {
 
     private Stage stage;
     private Scene scene;
@@ -24,21 +24,10 @@ public class Controller {
     private Scene gameScene;
     private Group gameRoot;
 
-
-    /**public void startMenuSwitch(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("StartGame.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-     */
-
     public void startMenuSwitch(ActionEvent event) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
         setGameRoot(gameRoot);
-        //Color.rgb(189, 177, 92));
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, COLOUR);
         setGameScene(gameScene);
         stage.setScene(gameScene);
@@ -49,7 +38,6 @@ public class Controller {
 
         stage.show();
     }
-
 
     @FXML
     private Pane myPane;
