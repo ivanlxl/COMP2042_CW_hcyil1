@@ -2,33 +2,36 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="myPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E9CB51;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StartController">
    <children>
       <ButtonBar layoutX="200.0" layoutY="276.0" prefHeight="40.0" prefWidth="200.0" />
-      <BorderPane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
-         <center>
-            <ColorPicker fx:id="myBackgroundPicker" onAction="#changeBackground" promptText="Pick Your Colour" style="-fx-background-color: FFA500;" BorderPane.alignment="CENTER">
-               <value>
-                  <Color red="0.9137254953384399" green="0.7960784435272217" blue="0.3176470696926117" />
-               </value></ColorPicker>
-         </center>
-      </BorderPane>
-      <Label layoutX="189.0" layoutY="29.0" text="2048" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="96.0" />
-         </font>
-      </Label>
-      <Button fx:id="start" contentDisplay="CENTER" layoutX="254.0" layoutY="316.0" mnemonicParsing="false" onAction="#startMenuSwitch" style="-fx-background-color: FFA500;" text="Start" textFill="WHITE">
+      <Button fx:id="start" contentDisplay="CENTER" layoutX="253.0" layoutY="324.0" mnemonicParsing="false" onAction="#startMenuSwitch" style="-fx-background-color: FFA500;" text="Start" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
+      <ChoiceBox fx:id="choiceBox" layoutX="224.0" layoutY="263.0" prefWidth="150.0" style="-fx-background-color: FFA500;" />
+      <Label layoutX="189.0" layoutY="-6.0" text="2048" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <ColorPicker fx:id="myBackgroundPicker" layoutX="237.0" layoutY="136.0" onAction="#changeBackground" style="-fx-background-color: FFA500;">
+         <value>
+            <Color red="0.9137254953384399" green="0.7960784435272217" blue="0.3176470696926117" />
+         </value>
+      </ColorPicker>
+      <Label fx:id="gridLabel" alignment="CENTER" layoutX="174.0" layoutY="200.0" prefHeight="46.0" prefWidth="250.0" text="Select Grid Size" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
