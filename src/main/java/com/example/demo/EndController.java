@@ -10,6 +10,9 @@ public class EndController {
     @FXML
     private Label myScore;
 
+    /**
+     * Display score when button is pressed
+     */
     @FXML
     void buttonScore() {
         int scoreEnd = (int) GameScene.getScore();

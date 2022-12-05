@@ -26,8 +26,11 @@ class GameScene{
     private static long score = 0;
 
 
-
-     static void setGRID(int number) { //Most likely for mode changing
+    /**
+     * Setting the grid length
+     * @param number
+     */
+     static void setGRID(int number) {
         GRID = number;
         LENGTH = (HEIGHT - ((GRID + 1) * distanceBetweenCells)) / (double) GRID;
     }
@@ -256,7 +259,7 @@ class GameScene{
      * @return
      */
 
-    private boolean haveSameNumberNearly(int i, int j) {
+    private boolean haveSameNumber(int i, int j) {
         if (i < GRID - 1 && j < GRID - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
@@ -279,7 +282,7 @@ class GameScene{
     private boolean canNotMove() {
         for (int i = 0; i < GRID; i++) {
             for (int j = 0; j < GRID; j++) {
-                if (haveSameNumberNearly(i, j)) {
+                if (haveSameNumber(i, j)) {
                     return false;
                 }
             }

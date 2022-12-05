@@ -58,6 +58,10 @@ public class StartController implements Initializable {
     private ChoiceBox choiceBox;
     private String[] grids = {"4", "5", "6"};
 
+    /**
+     * Change the colour of the background, changing the theme
+     * @param event
+     */
     public void changeBackground(ActionEvent event){
         Color myColor = myBackgroundPicker.getValue();
         myPane.setBackground(new Background(new BackgroundFill(myColor, null, null)));
@@ -78,6 +82,11 @@ public class StartController implements Initializable {
         choiceBox.getItems().addAll(grids);
         choiceBox.setOnAction(this::getGrid);
     }
+
+    /**
+     * Set the grid dimensions to be whatever the user selects
+     * @param event
+     */
     private void getGrid(Event event) {
         String currentGrid = (String) choiceBox.getValue();
         gridLabel.setText(currentGrid);
