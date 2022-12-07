@@ -34,12 +34,12 @@ public class HighScoreController {
         /**
          * Choose the file to open the high score lists
          */
-        fileChooser.setInitialDirectory(new File("C:\\Users\\ivanl\\OneDrive\\Desktop\\UNM\\Year 2\\2022 Autum Sem\\2042 Software Maintenance\\COMP2042LeeIvanXinLiang\\COMP2042_CW_hcyil1\\src\\main\\resources"));
+        fileChooser.setInitialDirectory(new File("C:\\Users\\ivanl\\OneDrive\\Desktop\\UNM\\Year 2\\2022 Autum Sem\\2042 Software Maintenance\\COMP2042LeeIvanXinLiang\\COMP2042_CW_hcyil1\\src\\main\\resources\\High Score Files"));
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             Scanner scanner = new Scanner(file);
             while(scanner.hasNextLine()){
-                textArea.appendText(scanner.nextLine() + "\n");
+                textArea.appendText( scanner.nextLine()+ "\n");
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -47,7 +47,9 @@ public class HighScoreController {
     }
     public void Submit(ActionEvent event){
         textArea.appendText(textField.getText() + " : " + scoreEnd + "\n"); //Adds username + score to text area
-
+        /**
+         * Saves whatever is in the text area
+         */
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null){
             saveFile(file, textArea.getText());
@@ -55,7 +57,7 @@ public class HighScoreController {
     }
 
     /**
-     * Saves to file
+     * Function for saving to file
      * @param file
      * @param scores
      */
@@ -67,7 +69,6 @@ public class HighScoreController {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
