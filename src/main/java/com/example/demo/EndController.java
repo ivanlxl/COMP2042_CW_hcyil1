@@ -17,7 +17,11 @@ public class EndController {
     private Scene scene;
     private Parent root;
 
-
+    /**
+     * Load next screen
+     * @param event
+     * @throws IOException
+     */
     public void button(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("HighScore.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
