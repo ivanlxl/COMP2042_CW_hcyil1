@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
@@ -21,9 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.example.demo.GameScene.GRID;
-import static com.example.demo.GameScene.distanceBetweenCells;
-import static com.example.demo.GameScene.LENGTH;
 
 import static com.example.demo.Main.*;
 public class StartController implements Initializable {
@@ -40,9 +36,7 @@ public class StartController implements Initializable {
         setGameScene(gameScene);
         stage.setScene(gameScene);
         GameScene game = new GameScene();
-        Group endgameRoot = new Group();
-        Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
-        game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot);
+        game.game(gameScene, gameRoot, stage);
 
         stage.show();
     }

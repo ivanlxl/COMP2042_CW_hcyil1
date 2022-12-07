@@ -50,10 +50,16 @@ public class HighScoreController {
 
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null){
-            saveSystem(file, textArea.getText());
+            saveFile(file, textArea.getText());
         }
     }
-    public void saveSystem(File file, String scores){
+
+    /**
+     * Saves to file
+     * @param file
+     * @param scores
+     */
+    public void saveFile(File file, String scores){
         try {
             PrintWriter printWriter = new PrintWriter(file);
             printWriter.write(scores);

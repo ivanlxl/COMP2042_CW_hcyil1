@@ -16,7 +16,6 @@ import java.util.Random;
 
 class GameScene{
     public static int GRID = 4;
-    public static boolean boardCheck = false;
     private static int HEIGHT = 700;
     static int distanceBetweenCells = 10;
     static double  LENGTH = (HEIGHT - ((GRID + 1) * distanceBetweenCells)) / (double) GRID;;
@@ -298,7 +297,7 @@ class GameScene{
         Cell.temp_score = 0;
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    void game(Scene gameScene, Group root, Stage primaryStage) {
         this.root = root;
         for (int i = 0; i < GRID; i++) {
             for (int j = 0; j < GRID; j++) {
@@ -352,7 +351,7 @@ class GameScene{
                     if (haveEmptyCell == -1) {
                         if (GameScene.this.canNotMove()) {
                             try {
-                                Pane gameOverPane = (Pane) FXMLLoader.load(getClass().getResource("LoseScreen.fxml"));
+                                Pane gameOverPane = (Pane) FXMLLoader.load(getClass().getResource("FXML/LoseScreen.fxml"));
                                 primaryStage.setScene(new Scene(gameOverPane));
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
