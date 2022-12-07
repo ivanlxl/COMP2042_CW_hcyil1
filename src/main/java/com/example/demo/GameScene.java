@@ -357,8 +357,6 @@ class GameScene{
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                            //EndController ObjScore = new EndController();
-                            //ObjScore.getScore(score);
                         }
                     } else if(haveEmptyCell == 1){
                         GameScene.this.randomFillNumber(2);
