@@ -2,7 +2,12 @@ Ivan Lee Xin Liang
 20411640
 
 Starting Instructions:
-Load the source code into an IDE of your choice, ensure JavaFX is added to the project. Under "Main" class, run. 
+1. Load the source code into an IDE of your choice, ensure JavaFX is added to the project. Under "Main" class, run. 
+2. In the main menu, select colour theme for the background using the ColourPicker. You can also select grid size to change the dimensions of the Grid.
+3. Once the game ends (either by victory or lose), appropriate screen will show. Click Next to enter highscore section
+4. Dialog will be prompted, choose corresponding file for the grid size (if grid size 4 was selected, choose the 4x4). 
+5. Existing scores will be displayed, enter your username in the textfield and submit to save your score. Dialog will appear again, select the same file. File replace warning may show, click yes. 
+
 
 Javadocs Location:
 
@@ -25,6 +30,7 @@ Implemented but not working features
 
 Not implemented features with reason of why they were not implemented
 - Highscore lists displays automatically. Was able to display highscore list without user intervention, however, saving the new score proved a problem
+- Highscore lists only stores the highest scores. Unable to extract only integers from the file. 
 
 New Java Classes Introduced
 - StartController
