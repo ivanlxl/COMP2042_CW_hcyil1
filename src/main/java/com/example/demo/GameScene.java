@@ -105,10 +105,10 @@ class GameScene{
     private int  haveEmptyCell() {
         for (int i = 0; i < GRID; i++) {
             for (int j = 0; j < GRID; j++) {
-                if (cells[i][j].getNumber() == 0)
-                    return 1;
                 if(cells[i][j].getNumber() == 2048)
                     return 0;
+                if (cells[i][j].getNumber() == 0)
+                    return 1;
             }
         }
         return -1;
@@ -359,6 +359,14 @@ class GameScene{
                         }
                     } else if(haveEmptyCell == 1){
                         GameScene.this.randomFillNumber(2);
+                    }
+                    else if (haveEmptyCell == 0){
+                        try {
+                            Pane gameOverPane = (Pane) FXMLLoader.load(getClass().getResource("FXML/WinScreen.fxml"));
+                            primaryStage.setScene(new Scene(gameOverPane));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
             });

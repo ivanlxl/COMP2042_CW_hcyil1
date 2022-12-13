@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="gameOverPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E9CB51;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoseController">
+<AnchorPane fx:id="winPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E9CB51;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.WinController">
    <children>
-      <Label alignment="TOP_LEFT" layoutX="77.0" layoutY="21.0" text="GAME OVER" textFill="WHITE">
+      <Label alignment="TOP_LEFT" layoutX="19.0" layoutY="14.0" text="Congratulations!" textFill="WHITE">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>
@@ -18,7 +18,7 @@
          </font>
       </Button>
       <Label layoutX="286.0" layoutY="183.0" />
-      <Label fx:id="myScore" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="177.0" prefHeight="46.0" prefWidth="590.0" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="myScore" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="120.0" prefHeight="46.0" prefWidth="590.0" text="You win!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
