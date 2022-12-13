@@ -13,16 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Displays the winning screen when user achieves 2048 tile.
+ */
 public class WinController {
-
-    @FXML
-    private Button Button;
-
-    @FXML
-    private AnchorPane winPane;
-
-    @FXML
-    private Label myScore;
 
     private Stage stage;
     private Scene scene;

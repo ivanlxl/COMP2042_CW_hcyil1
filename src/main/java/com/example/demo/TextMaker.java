@@ -8,11 +8,10 @@ import javafx.scene.text.Text;
 /**
  * This class handles the font editing
  */
-class TextMaker {
+public class TextMaker {
     private static TextMaker singleInstance = null;
 
     private TextMaker() {
-
     }
 
     static TextMaker getSingleInstance() {

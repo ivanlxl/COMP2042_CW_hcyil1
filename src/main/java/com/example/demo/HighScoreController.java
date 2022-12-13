@@ -14,12 +14,13 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * Handles loading the high scores and saving the user's username and scores to the high score file.
+ */
 public class HighScoreController {
 
     @FXML
     private Label myScore;
-    @FXML
-    private Button submitButton;
     @FXML
     private TextArea textArea;
     @FXML

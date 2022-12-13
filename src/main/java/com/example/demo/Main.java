@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
-
 public class Main extends Application {
     static final int WIDTH = 900;
     static final int HEIGHT = 900;

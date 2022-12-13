@@ -22,6 +22,10 @@ import java.util.ResourceBundle;
 
 
 import static com.example.demo.Main.*;
+
+/**
+ * Displays the main menu and prompts for theme selection and grid size
+ */
 public class StartController implements Initializable {
 
     private Stage stage;

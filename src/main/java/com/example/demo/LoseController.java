@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Displays screen when user does not reach 2048 tile
+ */
 public class LoseController {
 
     private Stage stage;

@@ -14,7 +14,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
-class GameScene{
+/**
+ * Handles game logic such as movement, cell spawning, and game state
+ */
+public class GameScene{
     public static int GRID = 4;
     private static int HEIGHT = 700;
     static int distanceBetweenCells = 10;
