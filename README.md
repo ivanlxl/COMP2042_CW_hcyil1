@@ -9,11 +9,12 @@ Starting Instructions:
 5. Existing scores will be displayed, enter your username in the textfield and submit to save your score. Dialog will appear again, select the same file. File replace warning may show, click yes. 
 
 
-Javadocs Location: src/main/resources/Javadocs
+Javadocs Location: COMP2042LeeIvanXinLiang\javadoc\com.example.demo\module-summary
 
 Bugs Fixed
 - Accurate Highscore
 - Only arrow keys spawns new cells
+- Only when a cell is combined or move will a new cell be spawned
 
 Working Features
 - Start Screen
@@ -25,8 +26,6 @@ Working Features
 
 
 Implemented but not working features
-- Only spawn new cells when the existing cells have moved
-Attempt : create a temporary cell that stores the values of the previous layout of the board before the user preses an arrow key. If the current board matches the previous version of the board, no cells were moved.
 - JUnit
 Attempt : Most likely due to file dependencies, but when I load Maven in to create JUnit tests, i can run my JUnit tests, but errors occur when trying to run application. If I don't load Maven, I can run my application but not JUnit tests. 
 Temp. Solution : Run all JUnit tests with Maven, then copy paste them into the project without Maven. JUnit tests wont be able to run in this file, but it exists. 
