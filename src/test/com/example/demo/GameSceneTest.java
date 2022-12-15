@@ -7,8 +7,7 @@ class GameSceneTest {
 
     @Test
     void setGRID() {
-        assertEquals(4, GameScene.GRID);
-    }
+        assertEquals(4, GameScene.GRID);}
 
     @Test
     void getLENGTH() {
@@ -19,4 +18,10 @@ class GameSceneTest {
     void getScore() {
         assertEquals(0.0, GameScene.getScore());
     }
+
+    @Test
+    void haveEmptyCell() {assertEquals(1,GameScene.haveEmptyCell());}
+
+    @Test
+    void haveSameNumber() { assertEquals(true, GameScene.haveSameNumber(2,2));}
 }

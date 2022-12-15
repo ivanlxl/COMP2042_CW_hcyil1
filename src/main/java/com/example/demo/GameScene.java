@@ -23,7 +23,7 @@ public class GameScene{
     static int distanceBetweenCells = 10;
     static double  LENGTH = (HEIGHT - ((GRID + 1) * distanceBetweenCells)) / (double) GRID;;
     private TextMaker textMaker = TextMaker.getSingleInstance();
-    private Cell[][] cells = new Cell[GRID][GRID];
+    private static Cell[][] cells = new Cell[GRID][GRID];
     private Group root;
     private static long score = 0;
 
@@ -105,7 +105,7 @@ public class GameScene{
      * Used to check whether there are empty cells, whether 2048 has been achieved, or whether there are no empty cells
      * @return
      */
-    private int  haveEmptyCell() {
+    static int  haveEmptyCell() {
         for (int i = 0; i < GRID; i++) {
             for (int j = 0; j < GRID; j++) {
                 if(cells[i][j].getNumber() == 2048)
@@ -261,7 +261,7 @@ public class GameScene{
      * @return
      */
 
-    private boolean haveSameNumber(int i, int j) {
+    static boolean haveSameNumber(int i, int j) {
         if (i < GRID - 1 && j < GRID - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
