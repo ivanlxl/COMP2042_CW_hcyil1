@@ -15,6 +15,7 @@ public class Cell {
     private Text textClass;
     static boolean modify = false;
     static long temp_score = 0;
+    static boolean spawn = false; //Checks whether a cell has been added together or a cell is moved
 
 
     void setModify(boolean modify) {
@@ -59,6 +60,7 @@ public class Cell {
 
         if (!cell.getTextClass().getText().equals("0")) { //if the cell is not 0, put the number
             root.getChildren().add(cell.getTextClass());
+            spawn = true;
         }
         if (!textClass.getText().equals("0")) {
             root.getChildren().add(textClass);
@@ -74,6 +76,7 @@ public class Cell {
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");//Adds the 2 numbers
         textClass.setText("0"); //When 2 cells are added, one of the cell needs to be made 0
+        spawn = true;
         root.getChildren().remove(textClass);
         cell.setColorByNumber(cell.getNumber());
         setColorByNumber(getNumber());

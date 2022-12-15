@@ -360,8 +360,9 @@ public class GameScene{
                                 throw new RuntimeException(e);
                             }
                         }
-                    } else if(haveEmptyCell == 1){
+                    } else if(haveEmptyCell == 1 && Cell.spawn == true){
                         GameScene.this.randomFillNumber(2);
+                        Cell.spawn = false;
                     }
                     else if (haveEmptyCell == 0){
                         try {
