@@ -13,7 +13,7 @@ public class Cell {
     private Rectangle rectangle;
     private Group root;
     private Text textClass;
-    private boolean modify = false;
+    static boolean modify = false;
     static long temp_score = 0;
 
 
