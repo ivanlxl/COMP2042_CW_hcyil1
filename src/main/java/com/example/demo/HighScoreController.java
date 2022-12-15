@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -56,6 +57,11 @@ public class HighScoreController {
             saveFile(file, textArea.getText());
         }
     }
+
+    public void QUIT(ActionEvent event){
+        Platform.exit();
+    }
+
 
     /**
      * Function for saving to file
