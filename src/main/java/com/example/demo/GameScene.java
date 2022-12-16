@@ -342,6 +342,7 @@ public class GameScene{
                         throw new RuntimeException("Invalid Key");
                     }
 
+
                     /**
                      * Sum up the score
                      */
@@ -360,17 +361,16 @@ public class GameScene{
                                 throw new RuntimeException(e);
                             }
                         }
-                    } else if(haveEmptyCell == 1 && Cell.spawn == true){
-                        GameScene.this.randomFillNumber(2);
-                        Cell.spawn = false;
-                    }
-                    else if (haveEmptyCell == 0){
+                    } else if (haveEmptyCell == 0){
                         try {
                             Pane gameOverPane = (Pane) FXMLLoader.load(getClass().getResource("FXML/WinScreen.fxml"));
                             primaryStage.setScene(new Scene(gameOverPane));
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+                    }else if(haveEmptyCell == 1 && Cell.spawn == true){
+                        GameScene.this.randomFillNumber(2);
+                        Cell.spawn = false;
                     }
                 });
             });

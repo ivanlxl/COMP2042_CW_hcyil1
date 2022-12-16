@@ -21,6 +21,12 @@ public class WinController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private Label myScore;
+    public void initialize() {
+        int finalScore = (int) GameScene.getScore();
+        myScore.setText("Your score: " + String.valueOf(finalScore));
+    }
 
     @FXML
     void button(ActionEvent event) throws IOException {
